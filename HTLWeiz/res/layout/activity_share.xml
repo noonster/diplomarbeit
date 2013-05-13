@@ -1,0 +1,46 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/share"
+    tools:context=".Share" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="140dp"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/Button11"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:onClick="fb" />
+
+        <Button
+            android:id="@+id/Button12"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:onClick="twitter" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/Button13"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:onClick="mail" />
+
+    </TableRow>
+
+</TableLayout>

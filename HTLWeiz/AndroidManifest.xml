@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.htlweiz"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/htlicon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.htlweiz.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Depart"
+            android:label="@style/ListFont" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Depart2"
+            android:label="@string/title_activity_depart2" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Masch"
+            android:label="@string/title_activity_masch" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Wirtschaft"
+            android:label="@string/title_activity_wirtschaft" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Fufe"
+            android:label="@string/title_activity_fufe" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Share"
+            android:label="@string/title_activity_share" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Imp"
+            android:label="@string/title_activity_imp" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Contact"
+            android:label="@string/title_activity_contact" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Times"
+            android:label="@string/title_activity_times" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Downloads"
+            android:label="@string/title_activity_downloads" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Teachers"
+            android:label="@string/title_activity_teachers" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.SingleMenuItemActivity"
+            android:label="@string/title_activity_single_menu_item" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.ParseJSON"
+            android:label="@string/title_activity_parse_json" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.News"
+            android:label="@string/title_activity_news" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.ReadRssFeedTask"
+            android:label="@string/title_activity_read_rss_feed_task" >
+        </activity>
+        <activity
+            android:name="com.example.htlweiz.Anzeigen"
+            android:label="@string/title_activity_anzeigen" >
+        </activity>
+    </application>
+
+</manifest>
