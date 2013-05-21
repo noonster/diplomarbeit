@@ -32,9 +32,10 @@ public class SingleMenuItemActivity extends Activity {
 		String description = i.getStringExtra("misc");
 		email = i.getStringExtra("email_to");
 
-		description = description.replaceAll("\\<.*?>","");
+		description = description.replaceAll("\\<.*?>", "");
 		description = description.replace("Sprechstunde:", "");
-		description = description.replace("Nebenstelle:", "\n" + " Nebenstelle:");
+		description = description.replace("Nebenstelle:", "\n"
+				+ " Nebenstelle:");
 
 		// displaying selected product name
 		txtName.setText(name);

@@ -30,7 +30,7 @@ public class Wirtschaft extends Activity {
 				"E - Informationstechnik", "M - Fertigungstechink" };
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.list_item, android.R.id.text1, values);
+				R.layout.list_itembig, R.id.name1, values);
 
 		listView.setAdapter(adapter);
 
