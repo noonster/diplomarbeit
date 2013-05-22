@@ -43,21 +43,19 @@ public class Masch extends Activity {
 
 				switch (position) {
 				case 0:
-					message = "1";
+					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-aut.pdf";
 					Intent myIntent = new Intent(view.getContext(),
-							Depart2.class);
+							ShowDownload.class);
 					myIntent.putExtra(EXTRA_MESSAGE, message);
 					view.getContext().startActivity(myIntent);
 					break;
-
 				case 1:
-					message = "2";
+					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-industrial.pdf";
 					Intent myIntent2 = new Intent(view.getContext(),
-							Depart2.class);
+							ShowDownload.class);
 					myIntent2.putExtra(EXTRA_MESSAGE, message);
 					view.getContext().startActivity(myIntent2);
 					break;
-
 				case 2:
 					message = "3";
 					Intent myIntent3 = new Intent(view.getContext(),

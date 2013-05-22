@@ -41,11 +41,11 @@ public class Wirtschaft extends Activity {
 
 				switch (position) {
 				case 0:
-					message = "6";
-					Intent myIntent = new Intent(view.getContext(),
-							Depart2.class);
-					myIntent.putExtra(EXTRA_MESSAGE, message);
-					view.getContext().startActivity(myIntent);
+					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-fach.pdf";
+					Intent myIntent1 = new Intent(view.getContext(),
+							ShowDownload.class);
+					myIntent1.putExtra(EXTRA_MESSAGE, message);
+					view.getContext().startActivity(myIntent1);
 					break;
 
 				case 1:

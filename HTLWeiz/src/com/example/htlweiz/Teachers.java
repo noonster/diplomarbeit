@@ -59,10 +59,8 @@ public class Teachers extends ListActivity {
 		ShowProgress = ProgressDialog.show(Teachers.this, "Bitte warten",
 				"Daten werden geladen", true);
 
-		// Hashmap for ListView
 		contactList = new ArrayList<HashMap<String, String>>();
 
-		// getting JSON string from URL
 		getJSONFromUrl();
 
 	}
