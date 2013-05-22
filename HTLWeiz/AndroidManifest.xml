@@ -13,15 +13,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/htlicon"
         android:label="@string/app_name"
-        android:logo="@drawable/icon"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.htlweiz.Splash"
-            android:configChanges="orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:name="com.example.htlweiz.MainActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,33 +27,23 @@
         </activity>
         <activity
             android:name="com.example.htlweiz.Depart"
-            android:configChanges="orientation"
-            android:label="@style/ListFont"
-            android:screenOrientation="portrait" >
+            android:label="@style/ListFont" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Depart2"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_depart2"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_depart2" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Masch"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_masch"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_masch" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Wirtschaft"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_wirtschaft"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_wirtschaft" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Fufe"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_fufe"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_fufe" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Share"
@@ -64,39 +51,27 @@
         </activity>
         <activity
             android:name="com.example.htlweiz.Imp"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_imp"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_imp" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Contact"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_contact"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_contact" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Times"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_times"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_times" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Downloads"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_downloads"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_downloads" >
         </activity>
         <activity
             android:name="com.example.htlweiz.Teachers"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_teachers"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_teachers" >
         </activity>
         <activity
             android:name="com.example.htlweiz.SingleMenuItemActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_single_menu_item"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_single_menu_item" >
         </activity>
         <activity
             android:name="com.example.htlweiz.ParseJSON"
@@ -113,20 +88,6 @@
         <activity
             android:name="com.example.htlweiz.Anzeigen"
             android:label="@string/title_activity_anzeigen" >
-        </activity>
-        <activity
-            android:name="com.example.htlweiz.DisplayNews"
-            android:label="@string/title_activity_display_news" >
-        </activity>
-        <activity
-            android:name="com.example.htlweiz.MainActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_splash"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.htlweiz.ShowDownload"
-            android:label="@string/title_activity_show_download" >
         </activity>
     </application>
 

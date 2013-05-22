@@ -25,11 +25,10 @@ public class Fufe extends Activity {
 		actionBar.hide();
 
 		ListView listView = (ListView) findViewById(R.id.listView1);
-		String[] values = new String[] { "Wirtschaftsingenieurwesen",
-				"Elektrotechnik - Wirtschaft" };
+		String[] values = new String[] { "Wirtschaftsingenieurwesen", "Elektrotechnik - Wirtschaft"};
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.list_itembig, R.id.name1, values);
+				R.layout.list_item, android.R.id.text1, values);
 
 		listView.setAdapter(adapter);
 

@@ -11,10 +11,10 @@ public class Imp extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_imp);
-
-		ActionBar actionBar = getActionBar();
-		actionBar.hide();
-
+		
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+        
 	}
 
 	@Override

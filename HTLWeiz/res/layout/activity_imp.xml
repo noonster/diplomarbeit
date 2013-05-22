@@ -13,8 +13,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="6dp"
         android:text="Impressum"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
@@ -93,14 +93,32 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="25dp"
-        android:text="Kaspar Glattfelder \n4YKWIB \nJhg. 12/13"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#ffffff" />
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="right"
+                android:src="@drawable/portrait" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Kaspar Glattfelder \n4YKWIB \nJhg. 12/13"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#ffffff" />
+
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

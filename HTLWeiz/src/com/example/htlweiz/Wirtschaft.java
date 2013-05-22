@@ -30,7 +30,7 @@ public class Wirtschaft extends Activity {
 				"E - Informationstechnik", "M - Fertigungstechink" };
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.list_itembig, R.id.name1, values);
+				R.layout.list_item, android.R.id.text1, values);
 
 		listView.setAdapter(adapter);
 
@@ -41,11 +41,11 @@ public class Wirtschaft extends Activity {
 
 				switch (position) {
 				case 0:
-					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-fach.pdf";
-					Intent myIntent1 = new Intent(view.getContext(),
-							ShowDownload.class);
-					myIntent1.putExtra(EXTRA_MESSAGE, message);
-					view.getContext().startActivity(myIntent1);
+					message = "6";
+					Intent myIntent = new Intent(view.getContext(),
+							Depart2.class);
+					myIntent.putExtra(EXTRA_MESSAGE, message);
+					view.getContext().startActivity(myIntent);
 					break;
 
 				case 1:

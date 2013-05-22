@@ -32,7 +32,7 @@ public class Masch extends Activity {
 				"W - Betriebsmanagement" };
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.list_itembig, R.id.name1, values);
+				R.layout.list_item, android.R.id.text1, values);
 
 		listView.setAdapter(adapter);
 
@@ -43,19 +43,21 @@ public class Masch extends Activity {
 
 				switch (position) {
 				case 0:
-					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-aut.pdf";
+					message = "1";
 					Intent myIntent = new Intent(view.getContext(),
-							ShowDownload.class);
+							Depart2.class);
 					myIntent.putExtra(EXTRA_MESSAGE, message);
 					view.getContext().startActivity(myIntent);
 					break;
+
 				case 1:
-					message = "http://docs.google.com/gview?embedded=true&url=http://www.wachtler-it.com/application/elektro-industrial.pdf";
+					message = "2";
 					Intent myIntent2 = new Intent(view.getContext(),
-							ShowDownload.class);
+							Depart2.class);
 					myIntent2.putExtra(EXTRA_MESSAGE, message);
 					view.getContext().startActivity(myIntent2);
 					break;
+
 				case 2:
 					message = "3";
 					Intent myIntent3 = new Intent(view.getContext(),
