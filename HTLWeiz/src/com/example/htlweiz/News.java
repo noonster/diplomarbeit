@@ -1,172 +1,170 @@
 package com.example.htlweiz;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
 
-import android.app.Activity;
+import android.app.ActionBar;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
-public class News extends Activity {
-	static final String feed = "http://feeds.feedburner.com/theappleblog";
-	/** Called when the activity is first created. */
-	ListView lv1;
+public class News extends ListActivity {
+	private ArrayList<RSSItem> itemlist = null;
+	private RSSListAdaptor rssadaptor = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
-		lv1 = (ListView) findViewById(R.id.listView666);
 
-		try {
-			new LoadingTask().execute(new URL(feed));
-		} catch (MalformedURLException e) {
-			this.finish();
-		}
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 
+		itemlist = new ArrayList<RSSItem>();
+
+		new RetrieveRSSFeeds().execute();
 	}
 
-	class LoadingTask extends AsyncTask<URL, Void, ArrayList<Post>> {
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		super.onListItemClick(l, v, position, id);
 
-		ProgressDialog ShowProgress;
+		RSSItem data = itemlist.get(position);
+
+		Intent in = new Intent(getApplicationContext(), DisplayNews.class);
+		in.putExtra("title", data.title);
+		in.putExtra("desc", data.description);
+
+		startActivity(in);
+	}
+
+	private void retrieveRSSFeed(String urlToRssFeed, ArrayList<RSSItem> list) {
+		try {
+			URL url = new URL(urlToRssFeed);
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			XMLReader xmlreader = parser.getXMLReader();
+			RSSParser theRssHandler = new RSSParser(list);
+
+			xmlreader.setContentHandler(theRssHandler);
+
+			InputSource is = new InputSource(url.openStream());
+
+			xmlreader.parse(is);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private class RetrieveRSSFeeds extends AsyncTask<Void, Void, Void> {
+		private ProgressDialog progress = null;
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			retrieveRSSFeed(
+					"http://www.htbla-weiz.ac.at/index.php?format=feed&type=rss",
+					itemlist);
+
+			rssadaptor = new RSSListAdaptor(News.this, R.layout.rssitemview,
+					itemlist);
+
+			return null;
+		}
+
+		@Override
+		protected void onCancelled() {
+			super.onCancelled();
+		}
 
 		@Override
 		protected void onPreExecute() {
-			ShowProgress = ProgressDialog.show(News.this, "",
-					"Loading. Please wait...", true);
+			progress = ProgressDialog.show(News.this, "Bitte warten",
+					"Daten werden geladen", true);
+
+			super.onPreExecute();
 		}
 
-		protected ArrayList<Post> doInBackground(URL... urls) {
-			RSSHandler rh = new RSSHandler();
-			SAXHelper sh = new SAXHelper(urls[0], rh);
-			sh.parseContent();
-			return rh.getPostList();
+		@Override
+		protected void onPostExecute(Void result) {
+			setListAdapter(rssadaptor);
 
+			progress.dismiss();
+
+			super.onPostExecute(result);
 		}
 
-		protected void onPostExecute(ArrayList<Post> pl) {
-			lv1.setAdapter(new EfficientAdapter(News.this, pl));
-//			lv1.setOnItemClickListener(new OnItemClickListener() {
-//				public void onItemClick(AdapterView<?> parent, View view,
-//						int position, long id) {
-//
-//					Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri
-//							.parse(PostList.get(position).getUrl()));
-//					startActivity(intent);
-//
-//				}
-//			});
-			ShowProgress.dismiss();
-
+		@Override
+		protected void onProgressUpdate(Void... values) {
+			super.onProgressUpdate(values);
 		}
 	}
 
-	class SAXHelper {
-		public HashMap<String, String> userList = new HashMap<String, String>();
-		private URL url;
-		private DefaultHandler df;
+	private class RSSListAdaptor extends ArrayAdapter<RSSItem> {
+		private List<RSSItem> objects = null;
 
-		public SAXHelper(URL url, DefaultHandler df) {
-			this.url = url;
-			this.df = df;
-		}
+		public RSSListAdaptor(Context context, int textviewid,
+				List<RSSItem> objects) {
+			super(context, textviewid, objects);
 
-		public void parseContent() {
-			try {
-
-				SAXParserFactory spf = SAXParserFactory.newInstance();
-				SAXParser sp = spf.newSAXParser();
-				XMLReader xr = sp.getXMLReader();
-				xr.setContentHandler(df);
-				xr.parse(new InputSource(url.openStream()));
-			} catch (Exception e) {
-				//TODO
-				e.printStackTrace();
-			}
-		}
-	}
-
-	class RSSHandler extends DefaultHandler {
-		public ArrayList<Post> postList = new ArrayList<Post>();
-		private Post currentPost = null;
-		private StringBuffer chars = null;
-
-		@Override
-		public void startElement(String uri, String localName, String qName,
-				Attributes atts) {
-
-			
-			if (localName.equalsIgnoreCase("item")) {
-				currentPost = new Post();
-			} else
-				// this is a waste but will work
-				chars = new StringBuffer();
+			this.objects = objects;
 		}
 
 		@Override
-		public void endElement(String uri, String localName, String qName)
-				throws SAXException {
-
-			// we're only interested once inside an item element
-			if (currentPost == null)
-				return;
-						
-					
-			if (localName.equalsIgnoreCase("title")
-					&& currentPost.getTitle() == null) {
-				currentPost.setTitle(chars.toString());
-
-			}
-			if (localName.equalsIgnoreCase("pubDate")
-					&& currentPost.getPubDate() == null) {
-				currentPost.setPubDate(chars.toString());
-
-			}
-			if (localName.equalsIgnoreCase("guid")
-					&& currentPost.getGuid() == null) {
-				currentPost.setGuid(chars.toString());
-
-			}
-			if (localName.equalsIgnoreCase("thumbnail")
-					&& currentPost.getThumbnail() == null) {
-				currentPost.setThumbnail(chars.toString());
-
-			}
-			if (localName.equalsIgnoreCase("link")
-					&& currentPost.getUrl() == null) {
-				currentPost.setUrl(chars.toString());
-			}
-
-			if (localName.equalsIgnoreCase("item")) {
-				postList.add(currentPost);
-				currentPost = null;
-			}
-
+		public int getCount() {
+			return ((null != objects) ? objects.size() : 0);
 		}
 
 		@Override
-		public void characters(char ch[], int start, int length) {
-			chars.append(new String(ch, start, length));
+		public long getItemId(int position) {
+			return position;
 		}
 
-		public ArrayList<Post> getPostList() {
-			return postList;
+		@Override
+		public RSSItem getItem(int position) {
+			return ((null != objects) ? objects.get(position) : null);
 		}
 
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View view = convertView;
+
+			if (null == view) {
+				LayoutInflater vi = (LayoutInflater) News.this
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				view = vi.inflate(R.layout.rssitemview, null);
+			}
+
+			RSSItem data = objects.get(position);
+
+			if (null != data) {
+				TextView title = (TextView) view.findViewById(R.id.txtTitle);
+				TextView date = (TextView) view.findViewById(R.id.txtDate);
+				TextView description = (TextView) view
+						.findViewById(R.id.txtDescription);
+
+				title.setText(data.title);
+				date.setText("on " + data.date);
+				description.setText(data.description);
+			}
+
+			return view;
+		}
 	}
 
 	@Override

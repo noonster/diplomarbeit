@@ -21,5 +21,8 @@
     <string name="title_activity_news">News</string>
     <string name="title_activity_read_rss_feed_task">ReadRssFeedTask</string>
     <string name="title_activity_anzeigen">Anzeigen</string>
+    <string name="title_activity_display_news">DisplayNews</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_show_download">ShowDownload</string>
 
 </resources>
