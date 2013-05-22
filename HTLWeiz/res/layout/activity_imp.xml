@@ -102,18 +102,12 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="5dp" >
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_gravity="right"
-                android:src="@drawable/portrait" />
-
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
                 android:text="Kaspar Glattfelder \n4YKWIB \nJhg. 12/13"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffff" />

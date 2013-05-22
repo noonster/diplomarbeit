@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
-    android:background="@drawable/sampleendless"
     android:orientation="vertical" >
 
     <TextView
@@ -11,7 +10,7 @@
         android:layout_marginLeft="12dp"
         android:padding="1dp"
         android:textColor="#1a584e"
-        android:textSize="1sp" >
+        android:textSize="0dp" >
     </TextView>
 
     <TextView
@@ -21,7 +20,7 @@
         android:layout_marginLeft="12dp"
         android:padding="1dp"
         android:textColor="#1a584e"
-        android:textSize="1sp" >
+        android:textSize="0dp" >
     </TextView>
 
     <TextView
@@ -31,19 +30,19 @@
         android:layout_marginLeft="12dp"
         android:padding="1dp"
         android:textColor="#1a584e"
-        android:textSize="1sp" >
+        android:textSize="0dp" >
     </TextView>
 
     <TextView
         android:id="@+id/name1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="10dp"
-        android:padding="4dp"
+        android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="12dip"
+        android:paddingTop="12dip"
         android:textColor="#ffffff"
-        android:textSize="22sp" />
+        android:textSize="20sp"
+        android:typeface="sans" />
 
 </RelativeLayout>
